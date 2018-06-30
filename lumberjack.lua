@@ -11,12 +11,12 @@ while true do
     success, data = turtle.inspect()
     while data.name == "minecraft:sapling" do
        success, data = turtle.inspect()
-    
     end
     turtle.dig()
     if turtle.getFuelLevel() < 32 then plein() end
     turtle.forward()
-    while data.name == "minecraft:log" do        turtle.digUp()
+    while data.name == "minecraft:log" do
+        turtle.digUp()
         turtle.up()
         success, data = turtle.inspectUp()
     end
