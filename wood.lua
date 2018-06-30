@@ -63,9 +63,11 @@ while true do
                 turtle.forward()
             end
             cutting()
+            if k == 2 then
+                turtle.turnRight()
+            end
             planting()
         end
-        turtle.turnRight()
     end
 
     -- Coupe le dernier segment d'arbres et dépose les bûches dans un coffre --
