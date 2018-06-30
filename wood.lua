@@ -63,7 +63,7 @@ while true do
                 turtle.forward()
             end
             cutting()
-            if k == 2 then
+            if j == 2 then
                 turtle.turnRight()
             end
             planting()
