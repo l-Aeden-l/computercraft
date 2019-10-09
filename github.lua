@@ -6,9 +6,9 @@ if ( not(#args >= 4) ) then
 end
 
 if #args == 4 then
-  h = http.get("https://raw.githubusercontent.com/"..args[1].."/"..args[2].."/"..args[3]).readAll()
-else
   h = http.get("https://raw.githubusercontent.com/"..args[1].."/"..args[2].."/"..args[3].."/"..args[4]).readAll()
+else
+  h = http.get("https://raw.githubusercontent.com/"..args[1].."/"..args[2].."/"..args[3].."/"..args[4].."/"..args[5]).readAll()
 end
 
 if h then
