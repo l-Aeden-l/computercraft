@@ -1,20 +1,33 @@
 local args = {...}
+local h = nil
 
-if #args ~= 5 then
-  error("Usage: "..shell.getRunningProgram().." <user> <repo> <branch> <path> <save file>")
+if ( not(#args >= 4) ) then
+  error("Usage: "..shell.getRunningProgram().." <user> <repo> <branch> [<path>] <save file>")
 end
 
-local h = http.get("https://raw.github.com/"..args[1].."/"..args[2].."/"..args[3].."/"..args[4]).readAll()
+if #args == 4 then
+  h = http.get("https://raw.githubusercontent.com/"..args[1].."/"..args[2].."/"..args[3]).readAll()
+else
+  h = http.get("https://raw.githubusercontent.com/"..args[1].."/"..args[2].."/"..args[3].."/"..args[4]).readAll()
+end
 
 if h then
-  if not fs.exists(args[5]) then
-        f = fs.open(args[5], "w")
+
+  if #args == 4 then
+    file = args[4]
+  else
+    file = args[5]
+  end
+
+  if not fs.exists(file) then
+        f = fs.open(file, "w")
         f.write(h)
         f.close()
-        print("File '"..args[5].."' downloaded.")
+        print("File '"..file.."' downloaded.")
   else
-        error("File '"..args[5].."' already exists.")
+        error("File '"..file.."' already exists.")
   end
+
 else
   error("Could not download file!")
 end
